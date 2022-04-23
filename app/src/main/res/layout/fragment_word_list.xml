@@ -18,5 +18,15 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/item_word" />
 
+        <Button
+            android:id="@+id/add_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/default_gap"
+            android:layout_marginBottom="@dimen/small_gap"
+            android:text="@string/add_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

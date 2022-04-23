@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.dgasteazoro.dummydictionary.R
 import com.dgasteazoro.dummydictionary.databinding.FragmentWordListBinding
+import com.dgasteazoro.dummydictionary.model.Word
 import com.dgasteazoro.dummydictionary.repository.DictionaryRepository
 
 class WordListFragment : Fragment() {
@@ -42,6 +43,13 @@ class WordListFragment : Fragment() {
             wordAdapter.setData(data)
         }
 
-    }
+        binding.addWord.setOnClickListener {
 
+
+            viewModel.addWord()
+
+
+        }
+
+    }
 }

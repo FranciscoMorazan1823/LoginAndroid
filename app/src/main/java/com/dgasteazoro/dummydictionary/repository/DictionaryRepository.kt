@@ -35,8 +35,7 @@ class DictionaryRepository {
         )
     ).toMutableList()
 
-    val words: MutableLiveData<List<Word>>
-        get() = MutableLiveData(_words)
+    val words: MutableLiveData<List<Word>> = MutableLiveData(_words)
 
     fun addWord(word: Word) {
         _words.add(word)
