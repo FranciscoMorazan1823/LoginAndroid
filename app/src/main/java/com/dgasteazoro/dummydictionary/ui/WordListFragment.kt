@@ -7,15 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import com.dgasteazoro.dummydictionary.DummyDictionaryApplication
 import com.dgasteazoro.dummydictionary.R
 import com.dgasteazoro.dummydictionary.databinding.FragmentWordListBinding
-import com.dgasteazoro.dummydictionary.model.Word
 import com.dgasteazoro.dummydictionary.repository.DictionaryRepository
 
 class WordListFragment : Fragment() {
     private val viewModelFactory by lazy {
-        val repository = DictionaryRepository()
-        WordViewModelFactory(repository)
+        val application = requireActivity().application as DummyDictionaryApplication
+        WordViewModelFactory(application.getDictionaryRepository())
     }
     private val viewModel: WordViewModel by viewModels {
         viewModelFactory
@@ -42,14 +42,5 @@ class WordListFragment : Fragment() {
         viewModel.words.observe(viewLifecycleOwner) { data ->
             wordAdapter.setData(data)
         }
-
-        binding.addWord.setOnClickListener {
-
-
-            viewModel.addWord()
-
-
-        }
-
     }
 }

@@ -6,7 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.dgasteazoro.dummydictionary.R
 import com.dgasteazoro.dummydictionary.databinding.ItemWordBinding
-import com.dgasteazoro.dummydictionary.model.Word
+import com.dgasteazoro.dummydictionary.data.model.Word
 
 class WordAdapter : RecyclerView.Adapter<WordAdapter.WordViewHolder>() {
 
