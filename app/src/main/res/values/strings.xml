@@ -3,4 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_button">Agregar</string>
+    <string name="add_word">Add Word</string>
+    <string name="hint_palabra">Word</string>
+    <string name="hint_definition">Definition</string>
 </resources>
