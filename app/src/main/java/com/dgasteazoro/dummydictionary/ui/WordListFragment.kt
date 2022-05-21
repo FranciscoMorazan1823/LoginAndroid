@@ -1,6 +1,7 @@
 package com.dgasteazoro.dummydictionary.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -39,14 +40,19 @@ class WordListFragment : Fragment() {
         wordListRecyclerView.apply {
             adapter = wordAdapter
         }
-        viewModel.words.observe(viewLifecycleOwner) { data ->
-            wordAdapter.setData(data)
+
+        viewModel.getAllWords()
+
+        viewModel.status.observe(viewLifecycleOwner) { status ->
+            when (status) {
+                is WordViewModel.WordUiState.Error -> Log.d("Word List Status", "Error", status.exception)
+                WordViewModel.WordUiState.Loading -> Log.d("Word List Status", "Loading")
+                is WordViewModel.WordUiState.Success -> status.word.observe(viewLifecycleOwner) { data ->
+                    wordAdapter.setData(data)
+                }
+
         }
-        binding.lifecycleOwner = viewLifecycleOwner
-        val navController = findNavController()
-        binding.actionAddWord.setOnClickListener {
-            val action = WordListFragmentDirections.actionWordListFragmentToAddWordFragment()
-            navController.navigate(action)
+
         }
     }
 }

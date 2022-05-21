@@ -8,6 +8,7 @@ import com.dgasteazoro.dummydictionary.network.ApiResponse
 import com.dgasteazoro.dummydictionary.repository.LoginRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
     val userField = MutableLiveData("")
@@ -27,7 +28,7 @@ class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
                     passwordField.value.toString()
                 )) {
                     is ApiResponse.Error -> LoginUiStatus.Error(response.exception)
-                    is ApiResponse.ErrorWithMessage -> LoginUiStatus.Resume // TODO: Modify state to allow errors with messages
+                    is ApiResponse.ErrorWithMessage -> LoginUiStatus.Error(Exception(response.message)) // TODO: Modify state to allow errors with messages
                     is ApiResponse.Success -> LoginUiStatus.Success(response.data)
                 }
             )

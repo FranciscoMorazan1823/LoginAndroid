@@ -17,7 +17,7 @@ class DictionaryRepository(
     private val api: WordService
 ) {
     private val wordDao = database.wordDao()
-    suspend fun getAllWords() = ApiResponse<LiveData<List<Word>>> {
+    suspend fun getAllWords() : ApiResponse<LiveData<List<Word>>> {
 
         return try {
             val response = api.getAllWord()

@@ -4,6 +4,7 @@ import androidx.lifecycle.*
 import com.dgasteazoro.dummydictionary.data.model.Word
 import com.dgasteazoro.dummydictionary.network.ApiResponse
 import com.dgasteazoro.dummydictionary.repository.DictionaryRepository
+import com.dgasteazoro.dummydictionary.ui.login.LoginUiStatus
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
