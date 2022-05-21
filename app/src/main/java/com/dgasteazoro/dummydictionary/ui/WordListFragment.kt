@@ -11,7 +11,6 @@ import androidx.navigation.fragment.findNavController
 import com.dgasteazoro.dummydictionary.DummyDictionaryApplication
 import com.dgasteazoro.dummydictionary.R
 import com.dgasteazoro.dummydictionary.databinding.FragmentWordListBinding
-import com.dgasteazoro.dummydictionary.repository.DictionaryRepository
 
 class WordListFragment : Fragment() {
     private val viewModelFactory by lazy {

@@ -5,7 +5,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-const val BASE_URL = "http://172.20.0.1:3000/" // cambiar IP a IP local
+const val BASE_URL = "http://10.0.2.2:3000/" // cambiar IP a IP local
 
 object RetrofitInstance {
     private val interceptorLogging = HttpLoggingInterceptor().apply {

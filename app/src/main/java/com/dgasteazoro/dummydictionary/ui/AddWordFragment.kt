@@ -12,8 +12,6 @@ import com.dgasteazoro.dummydictionary.DummyDictionaryApplication
 import com.dgasteazoro.dummydictionary.R
 import com.dgasteazoro.dummydictionary.data.model.Word
 import com.dgasteazoro.dummydictionary.databinding.FragmentAddWordBinding
-import com.dgasteazoro.dummydictionary.databinding.FragmentWordListBinding
-import com.dgasteazoro.dummydictionary.repository.DictionaryRepository
 
 class AddWordFragment : Fragment() {
     private val viewModelFactory by lazy {
