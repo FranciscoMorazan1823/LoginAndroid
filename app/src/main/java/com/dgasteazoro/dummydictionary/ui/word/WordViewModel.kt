@@ -4,7 +4,7 @@ import androidx.lifecycle.*
 import com.dgasteazoro.dummydictionary.data.model.Word
 import com.dgasteazoro.dummydictionary.network.ApiResponse
 import com.dgasteazoro.dummydictionary.repository.DictionaryRepository
-import com.dgasteazoro.dummydictionary.ui.login.LoginUiStatus
+import com.dgasteazoro.dummydictionary.ui.word.WordUiState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -15,6 +15,7 @@ class WordViewModel(private val repository: DictionaryRepository): ViewModel() {
         get() = _status
 
     fun getAllWords() {
+        _status.value = WordUiState.Loading
         viewModelScope.launch(Dispatchers.IO) {
             _status.postValue(
                 when (val response = repository.getAllWords()) {
@@ -31,15 +32,10 @@ class WordViewModel(private val repository: DictionaryRepository): ViewModel() {
             repository.addWord(word)
         }
     }
+
+
 }
 
-class WordViewModelFactory(private val repository: DictionaryRepository): ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(WordViewModel::class.java)) {
-            return WordViewModel(repository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel Class")
-    }
-}
+
 
 

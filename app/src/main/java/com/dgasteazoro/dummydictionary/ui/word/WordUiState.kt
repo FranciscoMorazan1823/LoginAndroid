@@ -1,4 +1,4 @@
-package com.dgasteazoro.dummydictionary.ui
+package com.dgasteazoro.dummydictionary.ui.word
 
 import androidx.lifecycle.LiveData
 import com.dgasteazoro.dummydictionary.data.model.Word

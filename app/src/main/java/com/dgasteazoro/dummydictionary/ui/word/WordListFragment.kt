@@ -1,4 +1,4 @@
-package com.dgasteazoro.dummydictionary.ui
+package com.dgasteazoro.dummydictionary.ui.word
 
 import android.os.Bundle
 import android.util.Log
@@ -8,18 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.dgasteazoro.dummydictionary.DummyDictionaryApplication
 import com.dgasteazoro.dummydictionary.R
 import com.dgasteazoro.dummydictionary.databinding.FragmentWordListBinding
+import com.dgasteazoro.dummydictionary.ui.ViewModelFactory
+import com.dgasteazoro.dummydictionary.ui.WordViewModel
 
 class WordListFragment : Fragment() {
     private val viewModelFactory by lazy {
         val application = requireActivity().application as DummyDictionaryApplication
-        WordViewModelFactory(application.getDictionaryRepository())
+        ViewModelFactory(application.getDictionaryRepository())
     }
     private val viewModel: WordViewModel by viewModels {
-        viewModelFactory
+viewModelFactory
     }
     private lateinit var binding: FragmentWordListBinding
 
@@ -45,14 +46,18 @@ class WordListFragment : Fragment() {
 
         viewModel.status.observe(viewLifecycleOwner) { status ->
             when (status) {
-                is WordViewModel.WordUiState.Error -> Log.d("Word List Status", "Error", status.exception)
-                WordViewModel.WordUiState.Loading -> Log.d("Word List Status", "Loading")
-                is WordViewModel.WordUiState.Success -> status.word.observe(viewLifecycleOwner) { data ->
-                    wordAdapter.setData(data)
-                }
+                is WordUiState.Error -> Log.d("Word List Status", "Error", status.exception)
+                WordUiState.Loading -> Log.d("Word List Status", "Loading")
+                is WordUiState.Success -> handleSuccess(status, wordAdapter)
 
+            }
+        }
+        }
+        private fun handleSuccess(status: WordUiState.Success, wordAdapter: WordAdapter){
+            status.word.observe(viewLifecycleOwner){
+                data->
+                wordAdapter.setData(data)
+            }
         }
 
-        }
-    }
 }

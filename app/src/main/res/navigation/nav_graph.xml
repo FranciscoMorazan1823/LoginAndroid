@@ -8,7 +8,7 @@
     app2:startDestination="@id/wordListFragment">
     <fragment
         android:id="@+id/wordListFragment"
-        android:name="com.dgasteazoro.dummydictionary.ui.WordListFragment"
+        android:name="com.dgasteazoro.dummydictionary.ui.word.WordListFragment"
         tools:layout="@layout/fragment_word_list"
         android:label="WordListFragment" >
         <action

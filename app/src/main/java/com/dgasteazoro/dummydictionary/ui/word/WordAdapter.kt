@@ -1,4 +1,4 @@
-package com.dgasteazoro.dummydictionary.ui
+package com.dgasteazoro.dummydictionary.ui.word
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

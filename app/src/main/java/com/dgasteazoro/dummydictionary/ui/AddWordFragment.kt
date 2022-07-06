@@ -16,11 +16,14 @@ import com.dgasteazoro.dummydictionary.databinding.FragmentAddWordBinding
 class AddWordFragment : Fragment() {
     private val viewModelFactory by lazy {
         val application = requireActivity().application as DummyDictionaryApplication
-        WordViewModelFactory(application.getDictionaryRepository())
+        WordViewModel(application.getDictionaryRepository())
     }
-    private val viewModel: WordViewModel by viewModels {
-        viewModelFactory
-    }
+    //private val viewModel: WordViewModel by viewModels {
+    //    viewModelFactory
+
+   // }
+   private val viewModel: WordViewModel by viewModels()
+
     private lateinit var binding: FragmentAddWordBinding
 
     override fun onCreateView(
